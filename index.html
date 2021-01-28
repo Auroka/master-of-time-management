@@ -3,7 +3,7 @@
  * @Author: lxd
  * @Date: 2020-10-30 14:31:52
  * @LastEditors: lxd
- * @LastEditTime: 2020-10-30 14:52:34
+ * @LastEditTime: 2021-01-28 11:13:41
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +30,11 @@
         font-size: 40vh;
         font-weight: bold;
       }
+      #clock {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
       @media screen and (max-width: 1080px) {
         #day {
           font-size: 8vh;
@@ -51,6 +56,8 @@
   <body>
     <div id="day"></div>
     <div id="time"></div>
+    <canvas id="clock" width="200px" height="200px"> </canvas>
+    <script src="./clock.js"></script>
     <script>
       const week = new Array('日', '一', '二', '三', '四', '五', '六')
       const domDay = document.getElementById('day')
@@ -71,6 +78,7 @@
         const weekDay = week[date.getDay()]
         const hour = date.getHours()
         const minute = date.getMinutes()
+        const seconds = date.getSeconds()
 
         domDay.innerHTML = month + '月' + day + '日 ' + '星期' + weekDay
         domTime.innerHTML = fixNum(hour) + ':' + fixNum(minute)
